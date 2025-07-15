@@ -6,13 +6,13 @@ news = []
 
 def fetch_163_news():
     try:
-        url = "https://www.163.com/dy/media/T1603594732083.html"
+        url = "https://news.163.com/"
         resp = requests.get(url, timeout=10)
         soup = BeautifulSoup(resp.text, "html.parser")
-        for item in soup.select("a"):
+        for item in soup.select("div.news_title a"):
             title = item.get_text(strip=True)
             link = item.get("href", "")
-            if title and "article" in link:
+            if title and link.startswith("http"):
                 news.append({"title": title, "link": link, "source": "网易"})
     except Exception as e:
         print("❌ 网易新闻抓取失败：", e)
@@ -24,8 +24,9 @@ def fetch_bbc():
         soup = BeautifulSoup(resp.text, "html.parser")
         for item in soup.select("a.gs-c-promo-heading"):
             title = item.get_text(strip=True)
-            link = "https://www.bbc.com" + item.get("href")
-            news.append({"title": title, "link": link, "source": "BBC"})
+            link = "https://www.bbc.com" + item.get("href", "")
+            if title and "/zhongwen" in link:
+                news.append({"title": title, "link": link, "source": "BBC"})
     except Exception as e:
         print("❌ BBC 抓取失败：", e)
 
@@ -36,7 +37,7 @@ def fetch_dw():
         soup = BeautifulSoup(resp.text, "html.parser")
         for item in soup.select("a[href^='/zh/']"):
             title = item.get_text(strip=True)
-            link = "https://www.dw.com" + item.get("href")
+            link = "https://www.dw.com" + item.get("href", "")
             if title and "zh" in link:
                 news.append({"title": title, "link": link, "source": "德国之声"})
     except Exception as e:
@@ -44,14 +45,13 @@ def fetch_dw():
 
 def fetch_reuters():
     try:
-        url = "https://www.reuters.com/news/archive/worldNews"
+        url = "https://cn.reuters.com/news/archive/worldNews"
         resp = requests.get(url, timeout=10)
         soup = BeautifulSoup(resp.text, "html.parser")
-        for item in soup.select("h3.story-title"):
+        for item in soup.select("article.story div.story-content a"):
             title = item.get_text(strip=True)
-            parent = item.find_parent("a")
-            if parent:
-                link = "https://www.reuters.com" + parent.get("href")
+            link = "https://cn.reuters.com" + item.get("href", "")
+            if title:
                 news.append({"title": title, "link": link, "source": "Reuters"})
     except Exception as e:
         print("❌ Reuters 抓取失败：", e)
@@ -71,26 +71,26 @@ def fetch_lianhe():
     except Exception as e:
         print("❌ 联合早报抓取失败：", e)
 
-# 执行所有抓取函数
+# 抓取所有来源
 fetch_163_news()
 fetch_bbc()
 fetch_dw()
 fetch_reuters()
 fetch_lianhe()
 
-# 去重（按 title + source）
-unique_news = []
+# 去重（title + source）
 seen = set()
+unique_news = []
 for item in news:
     key = (item["title"], item["source"])
     if key not in seen:
         seen.add(key)
         unique_news.append(item)
 
-# 保留前50条
+# 截取前 50 条
 final_news = unique_news[:50]
 
-# 写入 news.json
+# 保存为 news.json
 if final_news:
     with open("news.json", "w", encoding="utf-8") as f:
         json.dump(final_news, f, ensure_ascii=False, indent=2)
