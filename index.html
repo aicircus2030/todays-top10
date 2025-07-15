@@ -1,64 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <title>TODAY'S TOP10</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial; margin: 2em; }
-        h1 { color: #222; }
-        .nav a { margin-right: 1em; }
-        .news-block { margin-bottom: 1em; }
-        .source { font-size: 0.8em; color: gray; }
-        .more-news .item { font-size: 0.9em; color: #555; }
-    </style>
+  <meta charset="utf-8">
+  <title>TODAY'S TOP10</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 1em; line-height: 1.6; }
+    nav { background: #f0f0f0; padding: 1em; margin-bottom: 1em; }
+    nav a { margin-right: 10px; text-decoration: none; }
+    small { color: gray; }
+  </style>
 </head>
 <body>
-    <div class="nav">
-        <a href="education.html">教育</a>
-        <a href="health.html">健康</a>
-        <a href="work.html">工作</a>
-        <a href="finance.html">财务</a>
-        <a href="shopping.html">购物</a>
-        <a href="media.html">娱乐</a>
-    </div>
+<nav style="background:#f2f2f2;padding:1em;display:flex;flex-wrap:wrap;gap:0.5em;font-weight:bold;">
+  <a href="index.html">📰 TODAY'S TOP10</a>
+  <a href="education.html">🎓 教育</a>
+  <a href="health.html">🏥 医疗</a>
+  <a href="work.html">💼 求职</a>
+  <a href="finance.html">💰 财务</a>
+  <a href="shopping.html">🛍️ 购物</a>
+  <a href="media.html">📺 娱乐</a>
+  <a href="amazon.html">📦 好物推荐</a>
+  <a href="visa.html">🛂 签证移民</a>
+  <a href="life.html">🗽 美国常识</a>
+  <a href="videos.html">🎥 视频推荐</a>
+  <a href="privacy.html">🔐 隐私政策</a>
+  <a href="disclaimer.html">⚠️ 免责声明</a>
+</nav>
 
-    <h1>📰 TODAY'S TOP10</h1>
-    <p>📅 Today: 2025-07-15</p>
-    <div id="top10"></div>
 
-    <div class="more-news">
-        <h2>📌 更多资讯</h2>
-        <div id="moreNews"></div>
-    </div>
+<h1>📰 今日十大要闻</h1>
+<p>🗓️ <span id="today"></span></p>
 
-    <div style="margin-top: 2em;">
-        🔶 Your Ad Here (Google AdSense Placeholder)
-    </div>
+<div id="ads-top" style="background:#fafafa;padding:10px;text-align:center;border:1px dashed #ccc;margin-bottom:20px;">
+  🔶 广告位（Google AdSense Placeholder）
+</div>
 
-    <script>
-    fetch('news.json')
-      .then(r => r.json())
-      .then(data => {
-        const top = data.slice(0, 10);
-        const more = data.slice(10, 30);
-        const t = document.getElementById('top10');
-        const m = document.getElementById('moreNews');
-        if (top.length === 0) t.innerHTML = '<p>⚠️ 暂无新闻</p>';
-        else top.forEach(i => {
-            const d = document.createElement('div');
-            d.className = 'news-block';
-            d.innerHTML = `<a href="${i.link}" target="_blank">${i.title}</a><div class="source">来源：${i.source}</div>`;
-            t.appendChild(d);
-        });
-        more.forEach(i => {
-            const d = document.createElement('div');
-            d.className = 'item';
-            d.innerHTML = `• <a href="${i.link}" target="_blank">${i.title}</a> <span class="source">(${i.source})</span>`;
-            m.appendChild(d);
-        });
-      })
-      .catch(e => document.getElementById('top10').innerHTML = '<p>⚠️ 加载失败</p>');
-    </script>
+<h2>🔥 热门新闻</h2>
+<ul id="top10"></ul>
+
+<h2>📚 更多资讯</h2>
+<ul id="more"></ul>
+
+<div id="ads-bottom" style="background:#fafafa;padding:10px;text-align:center;border:1px dashed #ccc;margin-top:20px;">
+  🔷 广告位（底部 Placeholder）
+</div>
+
+<script>
+document.getElementById("today").innerText = new Date().toISOString().split('T')[0];
+fetch("news.json").then(r=>r.json()).then(data=>{
+  const top10 = document.getElementById("top10");
+  const more = document.getElementById("more");
+  data.slice(0, 10).forEach(n => {
+    let li = document.createElement("li");
+    li.innerHTML = `<a href="${n.link}" target="_blank">${n.title}</a> <small>[${n.source}]</small>`;
+    top10.appendChild(li);
+  });
+  data.slice(10).forEach(n => {
+    let li = document.createElement("li");
+    li.innerHTML = `<a href="${n.link}" target="_blank">${n.title}</a> <small>[${n.source}]</small>`;
+    more.appendChild(li);
+  });
+});
+</script>
 </body>
 </html>

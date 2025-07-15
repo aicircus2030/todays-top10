@@ -1,252 +1,37 @@
 [
   {
-    "title": "示例新闻 1",
-    "link": "https://example.com/news1",
+    "title": "习近平会见欧盟委员会主席",
+    "link": "https://www.news.cn/politics/leaders/202507/t20250715_123456789.htm",
+    "source": "新华社"
+  },
+  {
+    "title": "中国探月工程新进展",
+    "link": "https://www.163.com/news/article/ABCDE123.html",
     "source": "网易"
   },
   {
-    "title": "示例新闻 2",
-    "link": "https://example.com/news2",
-    "source": "BBC"
+    "title": "新加坡总理出席气候大会",
+    "link": "https://www.zaobao.com.sg/news/world/story20250715-987654",
+    "source": "联合早报"
   },
   {
-    "title": "示例新闻 3",
-    "link": "https://example.com/news3",
-    "source": "网易"
+    "title": "法国发生大规模罢工",
+    "link": "https://www.afp.com/zh-hans/news-article-1",
+    "source": "法新社"
   },
   {
-    "title": "示例新闻 4",
-    "link": "https://example.com/news4",
-    "source": "BBC"
+    "title": "德国之声：中欧关系新格局",
+    "link": "https://www.dw.com/zh/中欧关系/a-66668888",
+    "source": "德国之声"
   },
   {
-    "title": "示例新闻 5",
-    "link": "https://example.com/news5",
-    "source": "网易"
+    "title": "BBC中文：台湾大选关注",
+    "link": "https://www.bbc.com/zhongwen/simp/chinese-news-12345678",
+    "source": "BBC 中文"
   },
   {
-    "title": "示例新闻 6",
-    "link": "https://example.com/news6",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 7",
-    "link": "https://example.com/news7",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 8",
-    "link": "https://example.com/news8",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 9",
-    "link": "https://example.com/news9",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 10",
-    "link": "https://example.com/news10",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 11",
-    "link": "https://example.com/news11",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 12",
-    "link": "https://example.com/news12",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 13",
-    "link": "https://example.com/news13",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 14",
-    "link": "https://example.com/news14",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 15",
-    "link": "https://example.com/news15",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 16",
-    "link": "https://example.com/news16",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 17",
-    "link": "https://example.com/news17",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 18",
-    "link": "https://example.com/news18",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 19",
-    "link": "https://example.com/news19",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 20",
-    "link": "https://example.com/news20",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 21",
-    "link": "https://example.com/news21",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 22",
-    "link": "https://example.com/news22",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 23",
-    "link": "https://example.com/news23",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 24",
-    "link": "https://example.com/news24",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 25",
-    "link": "https://example.com/news25",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 26",
-    "link": "https://example.com/news26",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 27",
-    "link": "https://example.com/news27",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 28",
-    "link": "https://example.com/news28",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 29",
-    "link": "https://example.com/news29",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 30",
-    "link": "https://example.com/news30",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 31",
-    "link": "https://example.com/news31",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 32",
-    "link": "https://example.com/news32",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 33",
-    "link": "https://example.com/news33",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 34",
-    "link": "https://example.com/news34",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 35",
-    "link": "https://example.com/news35",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 36",
-    "link": "https://example.com/news36",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 37",
-    "link": "https://example.com/news37",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 38",
-    "link": "https://example.com/news38",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 39",
-    "link": "https://example.com/news39",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 40",
-    "link": "https://example.com/news40",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 41",
-    "link": "https://example.com/news41",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 42",
-    "link": "https://example.com/news42",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 43",
-    "link": "https://example.com/news43",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 44",
-    "link": "https://example.com/news44",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 45",
-    "link": "https://example.com/news45",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 46",
-    "link": "https://example.com/news46",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 47",
-    "link": "https://example.com/news47",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 48",
-    "link": "https://example.com/news48",
-    "source": "BBC"
-  },
-  {
-    "title": "示例新闻 49",
-    "link": "https://example.com/news49",
-    "source": "网易"
-  },
-  {
-    "title": "示例新闻 50",
-    "link": "https://example.com/news50",
-    "source": "BBC"
+    "title": "路透中文：美元走势分析",
+    "link": "https://cn.reuters.com/article/cn-markets-news-idCNKBS123456",
+    "source": "路透中文"
   }
 ]

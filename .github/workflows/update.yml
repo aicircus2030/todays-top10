@@ -1,27 +1,33 @@
-name: update-news
+
+name: Daily News Fetcher
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 jobs:
-  update:
+  update-news:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
-      - name: Install dependencies
+          python-version: '3.x'
+
+      - name: Install deps
         run: pip install requests beautifulsoup4
-      - name: Run fetch script
+
+      - name: Fetch news
         run: python fetch_news.py
-      - name: Commit and push
+
+      - name: Commit and Push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add news.json
-          git commit -m "🤖 Auto update news"
+          git commit -m "🔁 Auto update news.json"
           git push
