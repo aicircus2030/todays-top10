@@ -1,9 +1,6 @@
-
 import json
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
-import os
 
 news = []
 
@@ -81,11 +78,22 @@ fetch_dw()
 fetch_reuters()
 fetch_lianhe()
 
+# 去重（按 title + source）
+unique_news = []
+seen = set()
+for item in news:
+    key = (item["title"], item["source"])
+    if key not in seen:
+        seen.add(key)
+        unique_news.append(item)
+
+# 保留前50条
+final_news = unique_news[:50]
+
 # 写入 news.json
-if news:
-    news = sorted(news, key=lambda x: x["title"])[:50]  # 去重并截取前50条
+if final_news:
     with open("news.json", "w", encoding="utf-8") as f:
-        json.dump(news, f, ensure_ascii=False, indent=2)
-    print(f"✅ 成功抓取 {len(news)} 条新闻")
+        json.dump(final_news, f, ensure_ascii=False, indent=2)
+    print(f"✅ 成功抓取 {len(final_news)} 条新闻")
 else:
     print("⚠️ 所有新闻抓取失败，保留原有 news.json 未作更改")
