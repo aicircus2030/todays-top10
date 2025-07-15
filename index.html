@@ -1,1 +1,50 @@
-<html><head><title>Jinri Top 10</title></head><body><h1>Welcome to 今日十大</h1></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>今日十大 Jinri Top 10</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #222; }
+        h2 { margin-top: 30px; }
+        .top10 li { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .others li { font-size: 14px; color: #555; margin-bottom: 5px; }
+        a { text-decoration: none; color: #0070f3; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>📰 今日十大 Jinri Top 10</h1>
+    <p>🗓️ Today: 2025-07-15</p>
+
+    <h2>🔥 Top 10 News</h2>
+    <ol class="top10" id="top10"></ol>
+
+    <h2>📰 More News</h2>
+    <ol class="others" id="others"></ol>
+
+    <script>
+        fetch('news.json')
+            .then(response => response.json())
+            .then(data => {
+                const top10 = data.slice(0, 10);
+                const others = data.slice(10);
+                const topList = document.getElementById('top10');
+                const otherList = document.getElementById('others');
+                top10.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${item.url}" target="_blank">${item.title}</a>`;
+                    topList.appendChild(li);
+                });
+                others.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${item.url}" target="_blank">${item.title}</a>`;
+                    otherList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById('top10').innerHTML = '<li>Failed to load news.json</li>';
+            });
+    </script>
+</body>
+</html>

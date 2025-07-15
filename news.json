@@ -1,1 +1,202 @@
-[{"title": "Sample News Item", "source": "Example Source", "url": "https://example.com"}]
+[
+  {
+    "title": "News headline 1",
+    "url": "https://example.com/news1"
+  },
+  {
+    "title": "News headline 2",
+    "url": "https://example.com/news2"
+  },
+  {
+    "title": "News headline 3",
+    "url": "https://example.com/news3"
+  },
+  {
+    "title": "News headline 4",
+    "url": "https://example.com/news4"
+  },
+  {
+    "title": "News headline 5",
+    "url": "https://example.com/news5"
+  },
+  {
+    "title": "News headline 6",
+    "url": "https://example.com/news6"
+  },
+  {
+    "title": "News headline 7",
+    "url": "https://example.com/news7"
+  },
+  {
+    "title": "News headline 8",
+    "url": "https://example.com/news8"
+  },
+  {
+    "title": "News headline 9",
+    "url": "https://example.com/news9"
+  },
+  {
+    "title": "News headline 10",
+    "url": "https://example.com/news10"
+  },
+  {
+    "title": "News headline 11",
+    "url": "https://example.com/news11"
+  },
+  {
+    "title": "News headline 12",
+    "url": "https://example.com/news12"
+  },
+  {
+    "title": "News headline 13",
+    "url": "https://example.com/news13"
+  },
+  {
+    "title": "News headline 14",
+    "url": "https://example.com/news14"
+  },
+  {
+    "title": "News headline 15",
+    "url": "https://example.com/news15"
+  },
+  {
+    "title": "News headline 16",
+    "url": "https://example.com/news16"
+  },
+  {
+    "title": "News headline 17",
+    "url": "https://example.com/news17"
+  },
+  {
+    "title": "News headline 18",
+    "url": "https://example.com/news18"
+  },
+  {
+    "title": "News headline 19",
+    "url": "https://example.com/news19"
+  },
+  {
+    "title": "News headline 20",
+    "url": "https://example.com/news20"
+  },
+  {
+    "title": "News headline 21",
+    "url": "https://example.com/news21"
+  },
+  {
+    "title": "News headline 22",
+    "url": "https://example.com/news22"
+  },
+  {
+    "title": "News headline 23",
+    "url": "https://example.com/news23"
+  },
+  {
+    "title": "News headline 24",
+    "url": "https://example.com/news24"
+  },
+  {
+    "title": "News headline 25",
+    "url": "https://example.com/news25"
+  },
+  {
+    "title": "News headline 26",
+    "url": "https://example.com/news26"
+  },
+  {
+    "title": "News headline 27",
+    "url": "https://example.com/news27"
+  },
+  {
+    "title": "News headline 28",
+    "url": "https://example.com/news28"
+  },
+  {
+    "title": "News headline 29",
+    "url": "https://example.com/news29"
+  },
+  {
+    "title": "News headline 30",
+    "url": "https://example.com/news30"
+  },
+  {
+    "title": "News headline 31",
+    "url": "https://example.com/news31"
+  },
+  {
+    "title": "News headline 32",
+    "url": "https://example.com/news32"
+  },
+  {
+    "title": "News headline 33",
+    "url": "https://example.com/news33"
+  },
+  {
+    "title": "News headline 34",
+    "url": "https://example.com/news34"
+  },
+  {
+    "title": "News headline 35",
+    "url": "https://example.com/news35"
+  },
+  {
+    "title": "News headline 36",
+    "url": "https://example.com/news36"
+  },
+  {
+    "title": "News headline 37",
+    "url": "https://example.com/news37"
+  },
+  {
+    "title": "News headline 38",
+    "url": "https://example.com/news38"
+  },
+  {
+    "title": "News headline 39",
+    "url": "https://example.com/news39"
+  },
+  {
+    "title": "News headline 40",
+    "url": "https://example.com/news40"
+  },
+  {
+    "title": "News headline 41",
+    "url": "https://example.com/news41"
+  },
+  {
+    "title": "News headline 42",
+    "url": "https://example.com/news42"
+  },
+  {
+    "title": "News headline 43",
+    "url": "https://example.com/news43"
+  },
+  {
+    "title": "News headline 44",
+    "url": "https://example.com/news44"
+  },
+  {
+    "title": "News headline 45",
+    "url": "https://example.com/news45"
+  },
+  {
+    "title": "News headline 46",
+    "url": "https://example.com/news46"
+  },
+  {
+    "title": "News headline 47",
+    "url": "https://example.com/news47"
+  },
+  {
+    "title": "News headline 48",
+    "url": "https://example.com/news48"
+  },
+  {
+    "title": "News headline 49",
+    "url": "https://example.com/news49"
+  },
+  {
+    "title": "News headline 50",
+    "url": "https://example.com/news50"
+  }
+]
