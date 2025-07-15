@@ -11,17 +11,28 @@
         .others li { font-size: 14px; color: #555; margin-bottom: 5px; }
         a { text-decoration: none; color: #0070f3; }
         a:hover { text-decoration: underline; }
+        .source { font-size: 12px; color: gray; margin-left: 10px; }
+        .ad { border: 1px dashed #aaa; padding: 10px; margin: 20px 0; text-align: center; color: #555; }
     </style>
 </head>
 <body>
     <h1>📰 今日十大 Jinri Top 10</h1>
     <p>🗓️ Today: 2025-07-15</p>
 
+    <div class="ad">
+        <!-- AdSense 广告位（将此代码替换为你自己的 AdSense 脚本） -->
+        🔶 Your Ad Here (Google AdSense Placeholder)
+    </div>
+
     <h2>🔥 Top 10 News</h2>
     <ol class="top10" id="top10"></ol>
 
     <h2>📰 More News</h2>
     <ol class="others" id="others"></ol>
+
+    <div class="ad">
+        🔷 Your Ad Here (Bottom Ad Placeholder)
+    </div>
 
     <script>
         fetch('news.json')
@@ -31,16 +42,18 @@
                 const others = data.slice(10);
                 const topList = document.getElementById('top10');
                 const otherList = document.getElementById('others');
-                top10.forEach(item => {
+
+                function renderItem(item) {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="${item.url}" target="_blank">${item.title}</a>`;
-                    topList.appendChild(li);
-                });
-                others.forEach(item => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<a href="${item.url}" target="_blank">${item.title}</a>`;
-                    otherList.appendChild(li);
-                });
+                    const title = item.title || "Untitled";
+                    const url = item.url || "#";
+                    const source = item.source ? `<span class='source'>({item.source})</span>` : "";
+                    li.innerHTML = `<a href="${url}" target="_blank">${title}</a> ${source}`;
+                    return li;
+                }
+
+                top10.forEach(item => topList.appendChild(renderItem(item)));
+                others.forEach(item => otherList.appendChild(renderItem(item)));
             })
             .catch(error => {
                 document.getElementById('top10').innerHTML = '<li>Failed to load news.json</li>';
