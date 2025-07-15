@@ -1,27 +1,37 @@
 [
   {
-    "title": "US inflation slows down in June",
-    "link": "https://www.reuters.com/example1",
-    "source": "Reuters"
+    "title": "习近平会见欧盟委员会主席",
+    "link": "https://www.news.cn/politics/leaders/202507/t20250715_123456789.htm",
+    "source": "新华社"
   },
   {
-    "title": "China launches new lunar probe",
-    "link": "https://www.bbc.com/example2",
-    "source": "BBC"
+    "title": "中国探月工程新进展",
+    "link": "https://www.163.com/news/article/ABCDE123.html",
+    "source": "网易"
   },
   {
-    "title": "Germany to host climate summit",
-    "link": "https://www.dw.com/example3",
-    "source": "德国之声"
-  },
-  {
-    "title": "Singapore GDP grows 3.2%",
-    "link": "https://www.zaobao.com.sg/example4",
+    "title": "新加坡总理出席气候大会",
+    "link": "https://www.zaobao.com.sg/news/world/story20250715-987654",
     "source": "联合早报"
   },
   {
-    "title": "Tech stocks rally on Wall Street",
-    "link": "https://www.163.com/example5",
-    "source": "网易"
+    "title": "法国发生大规模罢工",
+    "link": "https://www.afp.com/zh-hans/news-article-1",
+    "source": "法新社"
+  },
+  {
+    "title": "德国之声：中欧关系新格局",
+    "link": "https://www.dw.com/zh/中欧关系/a-66668888",
+    "source": "德国之声"
+  },
+  {
+    "title": "BBC中文：台湾大选关注",
+    "link": "https://www.bbc.com/zhongwen/simp/chinese-news-12345678",
+    "source": "BBC 中文"
+  },
+  {
+    "title": "路透中文：美元走势分析",
+    "link": "https://cn.reuters.com/article/cn-markets-news-idCNKBS123456",
+    "source": "路透中文"
   }
 ]
