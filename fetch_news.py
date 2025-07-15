@@ -34,13 +34,15 @@ def fetch_dw():
         url = "https://www.dw.com/zh/zh%E6%96%B0%E9%97%BB/s-100827"
         resp = requests.get(url, timeout=10)
         soup = BeautifulSoup(resp.text, "html.parser")
-        for item in soup.select("a[href^='/zh/']"):
+        for item in soup.select("a[href^='/zh/'] h2"):
             title = item.get_text(strip=True)
-            link = "https://www.dw.com" + item.get("href")
-            if title and "zh" in link:
+            parent = item.find_parent("a")
+            link = "https://www.dw.com" + parent.get("href", "") if parent else ""
+            if title and "/zh/" in link:
                 news.append({"title": title, "link": link, "source": "德国之声"})
     except Exception as e:
         print("❌ 德国之声抓取失败：", e)
+
 
 def fetch_reuters():
     try:
@@ -61,7 +63,7 @@ def fetch_lianhe():
         url = "https://www.zaobao.com.sg/news"
         resp = requests.get(url, timeout=10)
         soup = BeautifulSoup(resp.text, "html.parser")
-        for item in soup.select("a"):
+        for item in soup.select("div.article-list h6 a"):
             title = item.get_text(strip=True)
             link = item.get("href", "")
             if title and "/news/" in link:
@@ -70,6 +72,7 @@ def fetch_lianhe():
                 news.append({"title": title, "link": link, "source": "联合早报"})
     except Exception as e:
         print("❌ 联合早报抓取失败：", e)
+
 
 # 执行所有抓取函数
 fetch_163_news()
