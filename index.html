@@ -1,43 +1,36 @@
 
-<html><body>
-<nav style="background:#f2f2f2;padding:10px;">
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>今日十大</title></head><body>
+<nav style="background:#f0f0f0;padding:10px;">
   <a href="index.html">📰 今日十大</a> |
   <a href="amazon.html">📦 Amazon 好物</a> |
-  <a href="visa.html">🛂 移民签证</a> |
+  <a href="visa.html">🛂 签证移民</a> |
   <a href="life.html">🗽 美国生活</a> |
-  <a href="videos.html">🎥 警察执法</a> |
+  <a href="videos.html">🎥 执法视频</a> |
   <a href="privacy.html">📄 隐私政策</a> |
   <a href="disclaimer.html">❗免责声明</a>
 </nav>
-<hr>
 <h1>📰 今日十大 Jinri Top 10</h1>
-<p>🗓️ Today: 2025-07-15</p>
-<p>🔶 Your Ad Here (Google AdSense Placeholder)</p>
+<p>🗓️ Today: <span id="today"></span></p>
 <p><b>🔥 Top 10 News</b></p>
-<ul>
+<ul id="top10"></ul>
+<p><b>📰 More News</b></p>
+<ul id="more"></ul>
 <script>
+document.getElementById("today").innerText = new Date().toISOString().split('T')[0];
 fetch("news.json").then(r=>r.json()).then(data=>{
-  let ul = document.currentScript.parentElement;
-  data.slice(0,10).forEach(item=>{
+  const top10 = document.getElementById("top10");
+  const more = document.getElementById("more");
+  data.slice(0,10).forEach(n=>{
     let li = document.createElement("li");
-    li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a> <small>[${item.source}]</small>`;
-    ul.appendChild(li);
+    li.innerHTML = `<a href="${n.link}" target="_blank">${n.title}</a> <small>[${n.source}]</small>`;
+    top10.appendChild(li);
+  });
+  data.slice(10).forEach(n=>{
+    let li = document.createElement("li");
+    li.innerHTML = `<a href="${n.link}" target="_blank">${n.title}</a> <small>[${n.source}]</small>`;
+    more.appendChild(li);
   });
 });
 </script>
-</ul>
-<p>📰 More News</p>
-<ul>
-<script>
-fetch("news.json").then(r=>r.json()).then(data=>{
-  let ul = document.currentScript.parentElement;
-  data.slice(10).forEach(item=>{
-    let li = document.createElement("li");
-    li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a> <small>[${item.source}]</small>`;
-    ul.appendChild(li);
-  });
-});
-</script>
-</ul>
-<p>🔷 Your Ad Here (Bottom Ad Placeholder)</p>
 </body></html>

@@ -1,15 +1,16 @@
+
 name: Daily News Fetcher
 
 on:
   schedule:
-    - cron: "0 2 * * *"  # 每天 UTC 2:00 = 北京时间上午 10 点
-  workflow_dispatch:     # 手动触发支持
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
   update-news:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -17,16 +18,16 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install deps
         run: pip install requests beautifulsoup4
 
-      - name: Run fetch_news.py
+      - name: Fetch news
         run: python fetch_news.py
 
-      - name: Commit and push changes
+      - name: Commit and Push
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add news.json
-          git commit -m "🤖 Auto-update news.json from GitHub Actions" || echo "No changes to commit"
+          git commit -m "🔁 Auto update news.json"
           git push
