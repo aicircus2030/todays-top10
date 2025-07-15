@@ -1,252 +1,27 @@
 [
   {
-    "title": "A - Z字母序索引",
-    "link": "https://www.dw.com/zh/a-z字母序索引/index-zh/a",
+    "title": "US inflation slows down in June",
+    "link": "https://www.reuters.com/example1",
+    "source": "Reuters"
+  },
+  {
+    "title": "China launches new lunar probe",
+    "link": "https://www.bbc.com/example2",
+    "source": "BBC"
+  },
+  {
+    "title": "Germany to host climate summit",
+    "link": "https://www.dw.com/example3",
     "source": "德国之声"
   },
   {
-    "title": "万国埔兴建新精神科疗养院 料2028年启用",
-    "link": "https://www.zaobao.com.sg/news/singapore/story20250715-7081254",
+    "title": "Singapore GDP grows 3.2%",
+    "link": "https://www.zaobao.com.sg/example4",
     "source": "联合早报"
   },
   {
-    "title": "三人杰出贡献获颁国大名誉博士学位",
-    "link": "https://www.zaobao.com.sg/news/singapore/story20250714-7142359",
-    "source": "联合早报"
-  },
-  {
-    "title": "三片鸡胸肉加饭 食客诉：24元太贵",
-    "link": "https://www.zaobao.com.sg/news/singapore/story20250714-7140472?ref=sidebar-daily-popular",
-    "source": "联合早报"
-  },
-  {
-    "title": "世锦赛小组赛不敌加拿大 我国水球男队两连败",
-    "link": "https://www.zaobao.com.sg/news/sports/story20250714-7143162",
-    "source": "联合早报"
-  },
-  {
-    "title": "东南亚",
-    "link": "https://www.zaobao.com.sg/news/sea",
-    "source": "联合早报"
-  },
-  {
-    "title": "东南亚",
-    "link": "https://www.zaobao.com.sg/news/sea",
-    "source": "联合早报"
-  },
-  {
-    "title": "东南亚",
-    "link": "https://www.zaobao.com.sg/news/sea",
-    "source": "联合早报"
-  },
-  {
-    "title": "东南亚",
-    "link": "https://www.zaobao.com.sg/news/sea",
-    "source": "联合早报"
-  },
-  {
-    "title": "中国",
-    "link": "https://www.dw.com/zh/中国/s-68398488",
-    "source": "德国之声"
-  },
-  {
-    "title": "中国",
-    "link": "https://www.zaobao.com.sg/news/china",
-    "source": "联合早报"
-  },
-  {
-    "title": "中国",
-    "link": "https://www.zaobao.com.sg/news/china",
-    "source": "联合早报"
-  },
-  {
-    "title": "中国",
-    "link": "https://www.zaobao.com.sg/news/china",
-    "source": "联合早报"
-  },
-  {
-    "title": "中国",
-    "link": "https://www.zaobao.com.sg/news/china",
-    "source": "联合早报"
-  },
-  {
-    "title": "中组部原副部长徐启方升任港澳办“二把手”",
-    "link": "https://www.zaobao.com.sg/news/china/story20250714-7142902",
-    "source": "联合早报"
-  },
-  {
-    "title": "亚洲",
-    "link": "https://www.dw.com/zh/亚洲/s-68398536",
-    "source": "德国之声"
-  },
-  {
-    "title": "人权",
-    "link": "https://www.dw.com/zh/人权/s-68398577",
-    "source": "德国之声"
-  },
-  {
-    "title": "以伊战争",
-    "link": "https://www.dw.com/zh/以伊战争/t-73007394",
-    "source": "德国之声"
-  },
-  {
-    "title": "体育",
-    "link": "https://www.zaobao.com.sg/news/sports",
-    "source": "联合早报"
-  },
-  {
-    "title": "体育",
-    "link": "https://www.zaobao.com.sg/news/sports",
-    "source": "联合早报"
-  },
-  {
-    "title": "体育",
-    "link": "https://www.zaobao.com.sg/news/sports",
-    "source": "联合早报"
-  },
-  {
-    "title": "俄罗斯入侵乌克兰",
-    "link": "https://www.dw.com/zh/俄罗斯入侵乌克兰/t-60868685",
-    "source": "德国之声"
-  },
-  {
-    "title": "前往dw.com首页",
-    "link": "https://www.dw.com/zh/在线报导/s-9058",
-    "source": "德国之声"
-  },
-  {
-    "title": "台湾",
-    "link": "https://www.dw.com/zh/台湾/s-68398524",
-    "source": "德国之声"
-  },
-  {
-    "title": "台湾主流民意倾向不同意大罢免 但投票率是决胜关键",
-    "link": "https://www.zaobao.com.sg/news/china/story20250715-7143307",
-    "source": "联合早报"
-  },
-  {
-    "title": "国际",
-    "link": "https://www.zaobao.com.sg/news/world",
-    "source": "联合早报"
-  },
-  {
-    "title": "国际",
-    "link": "https://www.zaobao.com.sg/news/world",
-    "source": "联合早报"
-  },
-  {
-    "title": "国际",
-    "link": "https://www.zaobao.com.sg/news/world",
-    "source": "联合早报"
-  },
-  {
-    "title": "国际",
-    "link": "https://www.zaobao.com.sg/news/world",
-    "source": "联合早报"
-  },
-  {
-    "title": "头条",
-    "link": "https://www.dw.com/zh/头条/headlines-zh",
-    "source": "德国之声"
-  },
-  {
-    "title": "女篮亚洲杯两轮小组赛 澳大利亚队净胜155分",
-    "link": "https://www.zaobao.com.sg/news/sports/story20250714-7143227",
-    "source": "联合早报"
-  },
-  {
-    "title": "德国",
-    "link": "https://www.dw.com/zh/德国/s-68398523",
-    "source": "德国之声"
-  },
-  {
-    "title": "我国巧固球男女队成功卫冕东南亚锦标赛冠军",
-    "link": "https://www.zaobao.com.sg/news/sports/story20250714-7142898",
-    "source": "联合早报"
-  },
-  {
-    "title": "戴庆成：香港海外反对派继续“硬对抗”",
-    "link": "https://www.zaobao.com.sg/news/china/story20250715-7143428",
-    "source": "联合早报"
-  },
-  {
-    "title": "政治",
-    "link": "https://www.dw.com/zh/政治/s-1681",
-    "source": "德国之声"
-  },
-  {
-    "title": "数据保护",
-    "link": "https://www.dw.com/zh/european-union-general-data-protection-regulation-gdpr-valid-may-25-2018/a-66186039",
-    "source": "德国之声"
-  },
-  {
-    "title": "文化",
-    "link": "https://www.dw.com/zh/文化/s-1683",
-    "source": "德国之声"
-  },
-  {
-    "title": "新加坡",
-    "link": "https://www.zaobao.com.sg/news/singapore",
-    "source": "联合早报"
-  },
-  {
-    "title": "新加坡",
-    "link": "https://www.zaobao.com.sg/news/singapore",
-    "source": "联合早报"
-  },
-  {
-    "title": "新加坡",
-    "link": "https://www.zaobao.com.sg/news/singapore",
-    "source": "联合早报"
-  },
-  {
-    "title": "新加坡",
-    "link": "https://www.zaobao.com.sg/news/singapore",
-    "source": "联合早报"
-  },
-  {
-    "title": "新闻自由",
-    "link": "https://www.dw.com/zh/新闻自由/s-68398580",
-    "source": "德国之声"
-  },
-  {
-    "title": "无障碍内容声明",
-    "link": "https://www.dw.com/zh/accessibility-statement/a-66186627",
-    "source": "德国之声"
-  },
-  {
-    "title": "最新视频",
-    "link": "https://www.dw.com/zh/最新视频/s-68399352",
-    "source": "德国之声"
-  },
-  {
-    "title": "最新视频",
-    "link": "https://www.dw.com/zh/最新视频/s-68399352",
-    "source": "德国之声"
-  },
-  {
-    "title": "柬埔寨明年起实施强制征兵制",
-    "link": "https://www.zaobao.com.sg/news/sea/story20250714-7143242",
-    "source": "联合早报"
-  },
-  {
-    "title": "欧洲",
-    "link": "https://www.dw.com/zh/欧洲/s-68398532",
-    "source": "德国之声"
-  },
-  {
-    "title": "欧盟或接近和美国达成协议 必要时实施反制",
-    "link": "https://www.zaobao.com.sg/news/world/story20250714-7141599",
-    "source": "联合早报"
-  },
-  {
-    "title": "气候环境",
-    "link": "https://www.dw.com/zh/气候环境/s-68398593",
-    "source": "德国之声"
-  },
-  {
-    "title": "法治国家",
-    "link": "https://www.dw.com/zh/法治国家/s-68398589",
-    "source": "德国之声"
+    "title": "Tech stocks rally on Wall Street",
+    "link": "https://www.163.com/example5",
+    "source": "网易"
   }
 ]
