@@ -2,52 +2,52 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>今日热门话题精选</title>
+  <meta charset="UTF-8">
+  <title>今日精选 - 热门话题</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-    h1 { color: #d63031; }
-    .topic { margin-bottom: 1.5rem; }
-    .topic-source { font-weight: bold; }
-    .topic-title { font-size: 1.1rem; margin: 0.3rem 0; }
-    .topic-summary { color: #555; font-size: 0.95rem; }
+    body { font-family: sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { color: #2d3436; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 0.6rem 0; border-bottom: 1px solid #eee; }
+    .source { font-size: 0.9rem; color: #888; }
+    a { text-decoration: none; color: #0984e3; }
+    nav { margin-bottom: 1.5rem; font-size: 1rem; }
+    nav a { margin-right: 1rem; color: #636e72; }
     footer { margin-top: 3rem; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 1rem; }
   </style>
 </head>
 <body>
-  <h1>今日热门话题精选</h1>
-  <p>每天只读10件最值得关注的事。</p>
+  <nav>
+    <a href="index.html">首页</a>
+    <a href="resources.html">资源推荐</a>
+    <a href="blog.html">博客</a>
+  </nav>
 
-  <div id="hot-topics">加载中…</div>
+  <h1>今日热门话题精选</h1>
+  <ul id="news-list">加载中...</ul>
 
   <footer>
-    博客入口（占位） | GitHub 备用链接 | 国内镜像备用链接<br>
+    博客入口（占位） | <a href="https://github.com/aicircus2030/todays-top10" target="_blank">GitHub 备用链接</a> |
+    <a href="#">国内镜像备用链接</a><br>
     © 2025 今日精选
   </footer>
 
   <script>
-    async function loadNews() {
-      const container = document.getElementById("hot-topics");
-      try {
-        const res = await fetch("news.json");
-        const data = await res.json();
-        container.innerHTML = "";
-        data.forEach((item, index) => {
-          const div = document.createElement("div");
-          div.className = "topic";
-          div.innerHTML = `
-            <div class="topic-source">🔥 [${item.source}]</div>
-            <div class="topic-title"><a href="${item.url}" target="_blank">${item.title}</a></div>
-            <div class="topic-summary">${item.summary}</div>
-          `;
-          container.appendChild(div);
+    fetch("news.json")
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById("news-list");
+        list.innerHTML = "";
+        data.forEach(item => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a><div class="source">来源：${item.source}</div>`;
+          list.appendChild(li);
         });
-      } catch (e) {
-        container.innerHTML = "❌ 无法加载内容。";
-      }
-    }
-    loadNews();
+      })
+      .catch(() => {
+        document.getElementById("news-list").innerHTML = "<li>加载失败，请稍后再试。</li>";
+      });
   </script>
 </body>
 </html>
