@@ -1,41 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>今日精选 | 每日必读热榜</title>
-  <meta name="description" content="精选中文资讯热榜、爆款话题与资源推荐，适合电脑和手机访问。" />
-  <meta name="keywords" content="热榜, 新闻, 资源, 中文网站, 今日精选" />
+  <title>今日热门话题精选</title>
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 600px;
-      margin: auto;
-      padding: 2rem;
-      background: #fafafa;
-    }
-    h1 {
-      color: #222;
-    }
-    a {
-      text-decoration: none;
-      color: #0070f3;
-    }
-    ul {
-      padding-left: 1rem;
-    }
+    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { color: #d63031; }
+    .topic { margin-bottom: 1.5rem; }
+    .topic-source { font-weight: bold; }
+    .topic-title { font-size: 1.1rem; margin: 0.3rem 0; }
+    .topic-summary { color: #555; font-size: 0.95rem; }
+    footer { margin-top: 3rem; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 1rem; }
   </style>
 </head>
 <body>
-  <h1>今日精选</h1>
+  <h1>今日热门话题精选</h1>
   <p>每天只读10件最值得关注的事。</p>
 
-  <ul>
-    <li><a href="blog/index.html">博客入口（占位）</a></li>
-    <li><a href="https://aicircus2030.github.io/top10/">GitHub 备用链接</a></li>
-    <li><a href="https://aicircus2030.gitee.io/top10/">国内镜像备用链接</a></li>
-  </ul>
+  <div id="hot-topics">加载中…</div>
 
-  <p style="margin-top:3rem;color:gray;">&copy; 2025 今日精选</p>
+  <footer>
+    博客入口（占位） | GitHub 备用链接 | 国内镜像备用链接<br>
+    © 2025 今日精选
+  </footer>
+
+  <script>
+    async function loadNews() {
+      const container = document.getElementById("hot-topics");
+      try {
+        const res = await fetch("news.json");
+        const data = await res.json();
+        container.innerHTML = "";
+        data.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.className = "topic";
+          div.innerHTML = `
+            <div class="topic-source">🔥 [${item.source}]</div>
+            <div class="topic-title"><a href="${item.url}" target="_blank">${item.title}</a></div>
+            <div class="topic-summary">${item.summary}</div>
+          `;
+          container.appendChild(div);
+        });
+      } catch (e) {
+        container.innerHTML = "❌ 无法加载内容。";
+      }
+    }
+    loadNews();
+  </script>
 </body>
 </html>
