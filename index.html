@@ -28,26 +28,26 @@
   <ul id="news-list">加载中...</ul>
 
   <footer>
-    博客入口（占位） | <a href="https://github.com/aicircus2030/todays-top10" target="_blank">GitHub 备用链接</a> |
+    博客入口（占位） | <a href="-" target="_blank">GitHub 备用链接</a> |
     <a href="#">国内镜像备用链接</a><br>
     © 2025 今日精选
   </footer>
 
   <script>
-    fetch("news.json")
-      .then(response => response.json())
-      .then(data => {
-        const list = document.getElementById("news-list");
-        list.innerHTML = "";
-        data.forEach(item => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a><div class="source">来源：${item.source}</div>`;
-          list.appendChild(li);
-        });
-      })
-      .catch(() => {
-        document.getElementById("news-list").innerHTML = "<li>加载失败，请稍后再试。</li>";
-      });
+   fetch('news.json')
+  .then(response => response.json())
+  .then(data => {
+    const list = document.getElementById("news-list");
+    list.innerHTML = "";
+    data.forEach(item => {
+      const div = document.createElement("div");
+      div.innerHTML = `<h3><a href="${item.url}" target="_blank">${item.title}</a></h3><p>${item.summary}</p><p><i>${item.source}</i></p>`;
+      list.appendChild(div);
+    });
+  })
+  .catch(error => {
+    document.getElementById("news-list").innerHTML = "<p>⚠️ 无法加载新闻内容</p>";
+  });
   </script>
 </body>
 </html>
