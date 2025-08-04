@@ -1,35 +1,34 @@
-name: Update News Daily
+name: 📰 Auto Update News
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # 每天 UTC 时间 03:00 运行（北京时间 11:00）
-  workflow_dispatch:     # 允许手动运行
+    - cron: '0 3 * * *'  # 每天 UTC 时间 03:00 执行，对应北京时间 11:00
+  workflow_dispatch:     # 允许手动触发
 
 jobs:
-  build:
+  update-news:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Generate news.json
-      run: |
-        echo '[
-          {
-            "title": "占位新闻标题",
-            "summary": "这是自动生成的新闻摘要。",
-            "source": "Example",
-            "url": "https://example.com"
-          }
-        ]' > news.json
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-        echo '{"summary": "这是自动生成的摘要"}' > summary.json
+      - name: 📦 Install dependencies
+        run: |
+          pip install requests beautifulsoup4 openai python-dotenv
 
-    - name: Commit and push
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-        git add news.json summary.json
-        git commit -m "📢 Auto-update news" || echo "No changes"
-        git push
+      - name: 🚀 Run update script
+        run: python newsbot/update.py
+
+      - name: 📤 Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add news.json summary.json
+          git commit -m "🔄 Daily news update" || echo "No changes to commit"
+          git push
