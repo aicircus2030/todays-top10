@@ -1,0 +1,35 @@
+name: Update News Daily
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # 每天 UTC 时间 03:00 运行（北京时间 11:00）
+  workflow_dispatch:     # 允许手动运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Generate news.json
+      run: |
+        echo '[
+          {
+            "title": "占位新闻标题",
+            "summary": "这是自动生成的新闻摘要。",
+            "source": "Example",
+            "url": "https://example.com"
+          }
+        ]' > news.json
+
+        echo '{"summary": "这是自动生成的摘要"}' > summary.json
+
+    - name: Commit and push
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add news.json summary.json
+        git commit -m "📢 Auto-update news" || echo "No changes"
+        git push
