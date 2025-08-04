@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -15,6 +14,13 @@
     nav { margin-bottom: 1.5rem; font-size: 1rem; }
     nav a { margin-right: 1rem; color: #636e72; }
     footer { margin-top: 3rem; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 1rem; }
+    .summary-box {
+      background: #f9f9f9;
+      padding: 1rem;
+      border: 1px solid #eee;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #0984e3;
+    }
   </style>
 </head>
 <body>
@@ -25,29 +31,52 @@
   </nav>
 
   <h1>今日热门话题精选</h1>
-  <ul id="news-list">加载中...</ul>
+
+  <div id="summary" class="summary-box">正在加载今日摘要...</div>
+
+  <ul id="news-list">正在加载新闻内容...</ul>
 
   <footer>
-    博客入口（占位） | <a href="-" target="_blank">GitHub 备用链接</a> |
+    博客入口（占位） |
+    <a href="#" target="_blank">GitHub 备用链接</a> |
     <a href="#">国内镜像备用链接</a><br>
     © 2025 今日精选
   </footer>
 
   <script>
-   fetch('news.json')
-  .then(response => response.json())
-  .then(data => {
-    const list = document.getElementById("news-list");
-    list.innerHTML = "";
-    data.forEach(item => {
-      const div = document.createElement("div");
-      div.innerHTML = `<h3><a href="${item.url}" target="_blank">${item.title}</a></h3><p>${item.summary}</p><p><i>${item.source}</i></p>`;
-      list.appendChild(div);
-    });
-  })
-  .catch(error => {
-    document.getElementById("news-list").innerHTML = "<p>⚠️ 无法加载新闻内容</p>";
-  });
+    // 加载 summary.json 内容作为导语
+    fetch('summary.json?ts=' + Date.now())
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("summary").innerText = data.summary || "暂无摘要";
+      })
+      .catch(() => {
+        document.getElementById("summary").innerText = "⚠️ 无法加载摘要";
+      });
+
+    // 加载 news.json 内容
+    fetch('news.json?ts=' + Date.now())
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById("news-list");
+        list.innerHTML = "";
+        if (data.length === 0) {
+          list.innerHTML = "<p>⚠️ 暂无可用新闻</p>";
+        } else {
+          data.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+              <h3><a href="${item.url}" target="_blank">${item.title}</a></h3>
+              <p>${item.summary}</p>
+              <p class="source">来源：${item.source}</p>
+            `;
+            list.appendChild(li);
+          });
+        }
+      })
+      .catch(() => {
+        document.getElementById("news-list").innerHTML = "<p>⚠️ 无法加载新闻内容</p>";
+      });
   </script>
 </body>
 </html>
