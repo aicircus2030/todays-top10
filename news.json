@@ -1,1 +1,20 @@
-[]
+[[
+  {
+    "title": "人工智能驱动教育革新，课堂将全面数字化",
+    "url": "https://www.bbc.com/news/education-ai-future",
+    "summary": "BBC 报道称，AI 技术将帮助教师实现个性化教学，提高学生成绩与参与度。",
+    "source": "BBC"
+  },
+  {
+    "title": "全球科技投资降温，但AI领域仍逆势增长",
+    "url": "https://www.reuters.com/technology/global-tech-funding-drops-except-ai-2025-08-03/",
+    "summary": "根据路透社统计，2025年第二季度科技投资整体下降，但AI项目融资增长超30%。",
+    "source": "Reuters"
+  },
+  {
+    "title": "美国高校调整课程应对技术飞速发展",
+    "url": "https://edition.cnn.com/2025/08/03/education/us-universities-curriculum-update/index.html",
+    "summary": "CNN 报道，多所高校正引入数据科学与AI课程，以培养未来所需技能。",
+    "source": "CNN"
+  }
+]
