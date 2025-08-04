@@ -1,30 +1,41 @@
 
 import json
 import requests
-from bs4 import BeautifulSoup
 from datetime import datetime
 
-def fetch_zhihu():
-    url = 'https://www.zhihu.com/billboard'
+def fetch_netease_news():
+    url = "https://3g.163.com/touch/reconstruct/article/list/BA10TA81wangning/0-10.html"
     headers = {'User-Agent': 'Mozilla/5.0'}
-    r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.text, 'html.parser')
-    results = []
-    for card in soup.select('.HotList-list > section.HotItem')[:5]:
-        title = card.select_one('.HotItem-content .HotItem-title')
-        link = card.find('a')
-        if title and link:
+    try:
+        response = requests.get(url, headers=headers)
+        text = response.text
+        json_str = text[text.find("{"):text.rfind("}")+1]
+        data = json.loads(json_str)
+        items = list(data.values())[0]
+        results = []
+        for item in items[:10]:
             results.append({
-                'title': title.text.strip(),
-                'link': link['href'],
-                'source': '知乎'
+                "title": item.get("title", "No Title"),
+                "link": item.get("url", "#"),
+                "source": "网易"
             })
-    return results
+        return results
+    except Exception as e:
+        return [{"title": "抓取失败", "link": "", "source": "系统"}]
+
+def save_summary(news_list):
+    # 本地使用助手端生成，站点不运行此步骤
+    summary = {
+        "summary": "📢 今日要闻自动摘要将在服务器端生成并每日更新。"
+    }
+    with open("summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary, f, ensure_ascii=False, indent=2)
 
 def main():
-    news = fetch_zhihu()
-    with open('news.json', 'w', encoding='utf-8') as f:
+    news = fetch_netease_news()
+    with open("news.json", "w", encoding="utf-8") as f:
         json.dump(news, f, ensure_ascii=False, indent=2)
+    save_summary(news)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
