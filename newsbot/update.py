@@ -1,79 +1,61 @@
+import feedparser
 import requests
-from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 
-# 模拟 headers
-headers = {
-    "User-Agent": "Mozilla/5.0"
+# === RSS 源列表（科技、教育、财经） ===
+rss_feeds = {
+    "BBC Technology": "http://feeds.bbci.co.uk/news/technology/rss.xml",
+    "Reuters Education": "https://www.reutersagency.com/feed/?best-topics=education&r=feed",
+    "CNN Business": "http://rss.cnn.com/rss/money_news_international.rss",
+    "AP News Tech": "https://apnews.com/apf-technology?format=RSS"
 }
 
-# 新闻来源列表（可扩展）
-sources = [
-    {
-        "name": "Reuters",
-        "url": "https://www.reuters.com/news/archive/technologyNews",
-        "base": "https://www.reuters.com",
-        "selector": "article.story",
-        "title_tag": "h3.story-title",
-        "link_attr": "href"
-    },
-    {
-        "name": "BBC",
-        "url": "https://www.bbc.com/news/technology",
-        "base": "https://www.bbc.com",
-        "selector": "a.gs-c-promo-heading",
-        "title_attr": "aria-label",
-        "link_attr": "href"
+# === 获取新闻摘要的函数（使用 ChatGPT） ===
+def summarize(text):
+    prompt = f"请用简洁中文总结下面的英文新闻，限40字以内：\n\n{text}"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer sk-REPLACE_WITH_YOUR_OWN_KEY"
     }
-]
+    data = {
+        "model": "gpt-4o",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.5
+    }
+    try:
+        res = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data, timeout=10)
+        return res.json()["choices"][0]["message"]["content"].strip()
+    except:
+        return "⚠️ 摘要生成失败"
 
-# 提取新闻函数
-def fetch_news():
-    news_items = []
-    for source in sources:
-        try:
-            res = requests.get(source["url"], headers=headers, timeout=10)
-            soup = BeautifulSoup(res.text, "html.parser")
-            articles = soup.select(source["selector"])
-            for article in articles[:6]:  # 每站最多抓6条
-                title = article.get(source.get("title_attr")) or article.text.strip()
-                link = article.get(source.get("link_attr")) or article.get("href")
-                if not link.startswith("http"):
-                    link = source["base"] + link
-                if len(title) > 10:
-                    news_items.append({
-                        "title_en": title.strip(),
-                        "url": link.strip(),
-                        "source": source["name"]
-                    })
-        except Exception as e:
-            print(f"Error fetching {source['name']}: {e}")
-    return news_items[:10]  # 最多10条
+# === 聚合新闻 ===
+items = []
+for source, url in rss_feeds.items():
+    feed = feedparser.parse(url)
+    for entry in feed.entries[:3]:
+        title = entry.get("title", "").strip()
+        summary = entry.get("summary", "").strip() or entry.get("description", "").strip()
+        link = entry.get("link", "#")
+        content = f"{title}\n\n{summary}"
+        translated = summarize(content)
+        items.append({
+            "title": title,
+            "summary": translated,
+            "url": link,
+            "source": source
+        })
 
-# 使用助手翻译为中文摘要（mock）
-def generate_summary(news_list):
-    translated_news = []
-    all_titles = []
-    for item in news_list:
-        summary = f"这篇来自 {item['source']} 的文章讲述了：{item['title_en'][:50]}..."  # 占位翻译
-        item["title"] = item["title_en"]
-        item["summary"] = summary
-        del item["title_en"]
-        translated_news.append(item)
-        all_titles.append(item["summary"])
-    return translated_news, all_titles
+# === 添加免责声明 ===
+items.append({
+    "title": "免责声明",
+    "summary": "本页面内容由程序自动抓取、生成与翻译，仅供参考。",
+    "url": "#",
+    "source": "系统"
+})
 
-# 输出文件
-def save_json(news, summary):
-    with open("news.json", "w", encoding="utf-8") as f:
-        json.dump(news, f, ensure_ascii=False, indent=2)
-    with open("summary.json", "w", encoding="utf-8") as f:
-        date = datetime.today().strftime("%Y年%m月%d日")
-        intro = f"**今日科技、教育与财经热点包括**：\n" + "、\n".join(summary[:5]) + f"。\n{date}。"
-        json.dump({"summary": intro}, f, ensure_ascii=False, indent=2)
+# === 写入 news.json 文件 ===
+with open("news.json", "w", encoding="utf-8") as f:
+    json.dump(items, f, ensure_ascii=False, indent=2)
 
-if __name__ == "__main__":
-    news_raw = fetch_news()
-    news_final, summary_list = generate_summary(news_raw)
-    save_json(news_final, summary_list)
+print(f"✅ {len(items)} 条新闻已生成 - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
