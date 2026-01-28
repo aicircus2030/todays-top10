@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>今日精选 - 热门话题</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body { font-family: sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
     h1 { color: #2d3436; }
@@ -14,6 +15,7 @@
     nav { margin-bottom: 1.5rem; font-size: 1rem; }
     nav a { margin-right: 1rem; color: #636e72; }
     footer { margin-top: 3rem; font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 1rem; }
+
     .summary-box {
       background: #f9f9f9;
       padding: 1rem;
@@ -21,10 +23,21 @@
       margin-bottom: 1.5rem;
       border-left: 5px solid #0984e3;
     }
+
+    /* Ad blocks */
+    .ad-block {
+      margin: 1.2rem 0;
+      padding: 0.2rem 0;
+    }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6431287128699475"
-     crossorigin="anonymous"></script>
-  </head>
+
+  <!-- ✅ AdSense Global Script (correct place: inside <head>) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6431287128699475"
+    crossorigin="anonymous"></script>
+
+</head>
+
 <body>
   <nav>
     <a href="index.html">首页</a>
@@ -34,9 +47,35 @@
 
   <h1>今日热门话题精选</h1>
 
+  <!-- ✅ Ad #1: Top Ad (below title) -->
+  <div class="ad-block">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6431287128699475"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
   <div id="summary" class="summary-box">正在加载今日摘要...</div>
 
   <ul id="news-list">正在加载新闻内容...</ul>
+
+  <!-- ✅ Ad #2: Bottom Ad (before footer) -->
+  <div class="ad-block">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6431287128699475"
+         data-ad-slot="2222222222"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <footer>
     博客入口（占位） |
@@ -62,15 +101,15 @@
       .then(data => {
         const list = document.getElementById("news-list");
         list.innerHTML = "";
-        if (data.length === 0) {
+        if (!data || data.length === 0) {
           list.innerHTML = "<p>⚠️ 暂无可用新闻</p>";
         } else {
           data.forEach(item => {
             const li = document.createElement("li");
             li.innerHTML = `
-              <h3><a href="${item.url}" target="_blank">${item.title}</a></h3>
-              <p>${item.summary}</p>
-              <p class="source">来源：${item.source}</p>
+              <h3><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
+              <p>${item.summary || ""}</p>
+              <p class="source">来源：${item.source || ""}</p>
             `;
             list.appendChild(li);
           });
